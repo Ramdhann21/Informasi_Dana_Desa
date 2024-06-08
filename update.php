@@ -1,9 +1,12 @@
 <?php
 require 'koneksi.php';
+
 // Mendapatkan ID dari URL
 $id = $_GET['id'];
+
 // Mendapatkan data berdasarkan ID
 $data = query("SELECT * FROM data WHERE id = $id")[0];
+
 if (isset($_POST['update'])) {
     $nama = $_POST['nama'];
     $keperluan = $_POST['keperluan'];
@@ -12,6 +15,7 @@ if (isset($_POST['update'])) {
     $dana_keluar = $_POST['dana_keluar'];
     $total = $_POST['total'];
     $tujuan = $_POST['tujuan'];
+
     // Query untuk mengupdate data
     $sql = "UPDATE data SET
                 Nama = '$nama',
@@ -22,6 +26,7 @@ if (isset($_POST['update'])) {
                 Total = '$total',
                 Tujuan = '$tujuan'
             WHERE id = $id";
+
     if ($conn->query($sql) === TRUE) {
         header('Location: tabel.php');
     } else {
@@ -29,8 +34,10 @@ if (isset($_POST['update'])) {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Konten head yang sesuai -->
     <meta charset="utf-8">
@@ -38,14 +45,19 @@ if (isset($_POST['update'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+
     <title>Dana Masuk</title>
+
     <!-- Custom fonts for this template-->
     <link href="Data/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link   href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
+
     <!-- Custom styles for this template-->
     <link href="Data/css/sb-admin-2.min.css" rel="stylesheet">
 </head>
+
 <body>
 <div class="container-fluid">
   <div class="card shadow mb-4">
@@ -88,4 +100,5 @@ if (isset($_POST['update'])) {
   </div>
 </div>
 </body>
+
 </html>

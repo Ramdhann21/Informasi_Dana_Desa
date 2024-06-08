@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -22,7 +22,7 @@
       </p>
       <a href="profile.php">
         <button type="button" class="btn">
-          <b>Informasi Desa </b>
+          <b>Informasi </b>
         </button>
       </a>
     </div>
@@ -37,12 +37,50 @@
         <a href="#">Product</a>
         <a href="#">Contact</a>
         <a href="#">About</a>
-        <a href="login.php">Login</a>
-        <i class='bx bx-list-ul'></i>
+        <a href="logout_proces.php">Login</a>
+        <!-- <i class='bx bx-list-ul'></i> -->
       </nav>
     </header>
-   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+  <!-- <div class="container">
+    <div class="row">
+      <div class="col">
+        <h2>hi</h2>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <div class="card" >
+          <img src="assets/OJK_Logo.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card" >
+          <img src="assets/OJK_Logo.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card" >
+          <img src="assets/OJK_Logo.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+</section> 
+    
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
  </body>
-</html>
+</html> 

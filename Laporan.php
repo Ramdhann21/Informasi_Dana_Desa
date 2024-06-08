@@ -1,3 +1,11 @@
+<?php
+// connention
+require 'koneksi.php';
+
+// Tabel
+$data = query("SELECT * FROM data ");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +17,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title> Dashboard</title>
+    <title>laporan</title>
 
     <!-- Custom fonts for this template-->
     <link href="Data/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -33,15 +41,16 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
                 <div class="sidebar-brand-icon rotate-n-15">
+                    
                 </div>
-                <div class="sidebar-brand-text mx-3">Dana Desa <sup></sup></div>
+                <div class="sidebar-brand-text mx-3">Dana Desa</div>
             </a>
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="index.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -60,17 +69,16 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Informasi </span>
+                    <span>Informasi</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Informasi Dana Desa:</h6>
-                        <a class="collapse-item" href="DanaM.php"> Dana Masuk</a>
-                        <a class="collapse-item" href="cards.html">Dana Keluar</a>
+                        <a class="collapse-item" href="DanaM.php">Dana Masuk</a>
+                        <a class="collapse-item" href="DanaK.php">Dana keluar</a>
                     </div>
                 </div>
             </li>
-
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -79,8 +87,15 @@
             <div class="sidebar-heading">
                 Addons
             </div>
-         
-            <!-- Nav Item - Table -->
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item active">
+                <a class="nav-link" href="Laporan.php">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Laporan</span></a>
+            </li>
+
+            <!-- Nav Item - Tables -->
             <li class="nav-item">
                 <a class="nav-link" href="tabel.php">
                     <i class="fas fa-fw fa-table"></i>
@@ -94,8 +109,6 @@
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
-
-
 
         </ul>
         <!-- End of Sidebar -->
@@ -128,22 +141,55 @@
                         </div>
                     </form>
 
+                    <!-- Topbar Navbar -->
 
                 </nav>
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
+               <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <!-- <h1 class="h3 mb-0 text-gray-800"> Selamat datang <span id="tanggalwaktu">febfd</span> </h1> -->
-                        <span>Selamat datang admin <span id="tanggalwaktu"></span> walah wee</span>
-                    </div>
-
-                   
-
-                    
+                    <h1 class="h3 mb-2 text-gray-800">Laporan</h1>
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-warning">Data Laporan</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Tanggal</th>
+                                            <th>Total</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Tanggal</th>
+                                            <th>Total</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <?php foreach ($data as $row) : ?>
+                                        <tr>
+                                            <td><?= $row ["Nama"]?></td>
+                                            <td><?= $row ["Tanggal"]?></td>
+                                            <td><?= $row ["Total"]?></td>
+                                            <td>
+                                                <a href="update.php?id=<?= $row['id'] ?>" class="btn btn-warning btn-sm">Edit</a>
+                                                <a href="delete.php?id=<?= $row['id'] ?>" class="btn btn-danger btn-sm">Hapus</a>
+                                            </td>
+                                        </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
 
@@ -157,7 +203,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; Your Website 2020</span>
                     </div>
                 </div>
             </footer>
@@ -175,125 +221,23 @@
     </a>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="data/vendor/jquery/jquery.min.js"></script>
-    <script src="data/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="Data/vendor/jquery/jquery.min.js"></script>
+    <script src="Data/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="data/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="Data/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="data/js/sb-admin-2.min.js"></script>
+    <script src="js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="data/vendor/chart.js/Chart.min.js"></script>
+    <script src="Data/vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="data/js/demo/chart-area-demo.js"></script>
-    <script src="data/js/demo/chart-pie-demo.js"></script>
+    <script src="js/demo/chart-area-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
+    <script src="js/demo/chart-bar-demo.js"></script>
 
-    <script> 
- var dt = new Date();
-    document.getElementById("tanggalwaktu").innerHTML = dt.toLocaleString();
-    </script>
 </body>
 
 </html>
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dana Desa </title>
-  <link rel="stylesheet" href="css/dashboard.css">
-</head>
-<body>
-  <div class="container">
-    <div class="sidebar">
-        <h4>Selamat Datang di Informasi Dana Desa <span id="tanggalwaktu">febfd</span></h4>
-        
-      <h2>Dana Desa</h2>
-      <ul>
-        <li><a href="#" class="active"> Informasi  Dana </a></li>
-        <li><a href="#">Laporan Penggunaan Dana</a></li>
-        <li><a href="#">Statistik Dana Desa</a></li>
-        <li><a href="#">Pengaturan</a></li>
-        <li><a href="#">Pesan</a></li>
-        <li><a href="#">Tentang</a></li>
-      </ul>
-    </div>
-    <div class="content">
-      <div class="widget">
-        <div class="widget-header">
-           
-          <h2>Masukan Informasi Dana</h2>
-        </div>
-        <div class="widget-content">
-          <form id="dataForm">
-            <div class="form-input">
-              <label for="item">Sumber Dana :</label>
-              <input type="text" id="item" name="item" required>
-            </div>
-            <div class="form-input">
-              <label for="amount">Jumlah Dana (IDR):</label>
-              <input type="number" id="amount" name="amount" required>
-            </div>
-            <div class="form-input">
-              <label for="description">Deskripsi:</label>
-              <textarea id="description" name="description" rows="4" required></textarea>
-            </div>
-            <div class="form-input">
-              <button type="submit">Submit</button>
-              <button type="delete"> Edit</button>
-              <button type="delete">Delete</button>
-              <h1></h1>
-
-            </div>
-          </form>
-        </div>
-      </div>
-      
-      <div class="widget" id="displayWidget" style="display: none;">
-        <div class="widget-header">
-          <h2>Daftar Sumber Dana Desa</h2>
-        </div>
-        <div class="widget-content" id="displayContent">
-           Submitted data will be displayed here
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="widget" id="displayWidget">
-    <div class="widget-header">
-      <h2>Daftar Sumber Dana Desa</h2>
-    </div>
-    <div class="widget-content" id="displayContent">
-  <script src="script.js"></script>
-
-  <table class="table-data">
-    <thead>
-   <tr>
-     <th style="width: 20%">Sumber Dana</th>
-     <th>Jumlah Dana (IDR)</th>
-     <th style="width: 20%">Deskripsi</th>
-   </tr>
-    </thead>
-    <tbody>
-   <tr>
-      <td>Bantuan Bansos</td>
-      <td>271 Triliun</td>
-      <td>buat membangun dan memajukan rakyat</td>
-   </tr>
-   
-   <tr>
-    <td>Bantuan Antar desa</td>
-    <td>271 milion</td>
-    <td>memajukan desa</td>
- </tr>
-    </tbody>
- </table>
- <script> 
- var dt = new Date();
-    document.getElementById("tanggalwaktu").innerHTML = dt.toLocaleString();
-    </script>
-</body>
-</html>   -->
